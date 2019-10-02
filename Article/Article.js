@@ -99,8 +99,6 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
-  Hint: You will need to use createElement more than once here!
-
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
@@ -112,3 +110,39 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const new_article = document.createElement('div');
+  const new_title = document.createElement('h2');
+  const new_date = document.createElement('p');
+  const new_first = document.createElement('p');
+  const new_second = document.createElement('p');
+  const new_third = document.createElement('p');
+  const new_button = document.createElement('span');
+
+  new_article.appendChild(new_title);
+  new_article.appendChild(new_date);
+  new_article.appendChild(new_first);
+  new_article.appendChild(new_second);
+  new_article.appendChild(new_third);
+
+  new_article.classList.add('article');
+  new_date.classList.add('date');
+  new_button.classList.add('expandButton');
+
+  new_title.textContent = title;
+  new_date.textContent = date;
+  new_first.textContent = firstParagraph;
+  new_second.textContent = secondParagraph;
+  new_third.textContent = thirdParagraph;
+
+  return new_article;
+}
+
+const articles = document.querySelector('.articles')
+
+data.forEach(item => {
+  console.log(item.title)
+  articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+})
