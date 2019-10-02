@@ -126,6 +126,7 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   new_article.appendChild(new_first);
   new_article.appendChild(new_second);
   new_article.appendChild(new_third);
+  new_article.appendChild(new_button);
 
   new_article.classList.add('article');
   new_date.classList.add('date');
@@ -137,12 +138,18 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   new_second.textContent = secondParagraph;
   new_third.textContent = thirdParagraph;
 
+  new_article.addEventListener('click', (e) => {
+    // console.log('article opened', e.target)
+    new_article.classList.toggle('article-open');
+    // new_button.classList.toggle('close');
+  })
+
   return new_article;
 }
 
 const articles = document.querySelector('.articles')
 
 data.forEach(item => {
-  console.log(item.title)
+  // console.log(item.title)
   articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
 })
